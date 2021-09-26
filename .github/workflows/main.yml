@@ -40,9 +40,9 @@ jobs:
       - name: Check the Symfony console
         run: bin/console -V
       - name: The PHP Security Checker
-  # You may pin to the exact commit or the version.
-        # uses: symfonycorp/security-checker-action@038cecb1ee1bf871d1ef43e873f813d900a1125c
         uses: symfonycorp/security-checker-action@v2
+      - name: easy configurable php-stan
+        uses: zalexki/phpstan-action@0.1
       ## —— Tests ———————————————————————————————————————————————————————————
       - name: Run functionnal and unit tests
         run: |
