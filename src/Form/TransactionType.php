@@ -20,6 +20,7 @@ class TransactionType extends AbstractType
                     'sell' => 1
                 ]
             ])
+            ->add('wallet')
             ->add('dateAt', DateType::class, [
                 'widget' => 'single_text',
             ])
