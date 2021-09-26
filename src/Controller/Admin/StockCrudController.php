@@ -22,7 +22,10 @@ class StockCrudController extends AbstractCrudController
             TextField::new('name')->setColumns(7),
             TextField::new('ticker')->setColumns(4),
             ColorField::new('color')->setColumns(1),
-            CollectionField::new('transactions')->setEntryType(TransactionType::class)->setEntryIsComplex(true)->setColumns(6)
+            CollectionField::new('transactions')
+                ->setEntryType(TransactionType::class)
+                ->setEntryIsComplex(true)
+                ->setColumns(6)
         ];
     }
 }

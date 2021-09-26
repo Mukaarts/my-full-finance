@@ -52,7 +52,7 @@ class Transaction
     private $stock;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Wallet::class, inversedBy="transactons")
+     * @ORM\ManyToOne(targetEntity=Wallet::class, inversedBy="transactions")
      */
     private $wallet;
 
@@ -133,11 +133,6 @@ class Transaction
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->dateAt->format('Y-m-D');
-    }
-
     public function getWallet(): ?Wallet
     {
         return $this->wallet;
@@ -148,5 +143,10 @@ class Transaction
         $this->wallet = $wallet;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->dateAt->format('Y-m-d');
     }
 }

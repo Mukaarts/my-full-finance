@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Wallet;
+use App\Form\TransactionType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -31,6 +32,7 @@ class WalletCrudController extends AbstractCrudController
                 ->setColumns(12)
                 ->hideOnIndex(),
             CollectionField::new('transactions')
+                ->setEntryType(TransactionType::class)
                 ->setColumns(12)
                 ->hideOnIndex()
         ];
