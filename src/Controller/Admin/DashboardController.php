@@ -14,9 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
-    /**
-     * @Route("/admin", name="admin")
-     */
+    #[Route('/', name: 'dash')]
     public function index(): Response
     {
         return parent::index();
@@ -34,8 +32,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Wallets', 'fas fa-list', Wallet::class);
         yield MenuItem::section('Depot');
         yield MenuItem::linkToCrud('Stocks', 'fas fa-list', Stock::class);
-        yield MenuItem::linkToCrud('Transactions', 'fas fa-list',
-        Transaction::class);
+        yield MenuItem::linkToCrud(
+            'Transactions',
+            'fas fa-list',
+            Transaction::class
+        );
         yield MenuItem::linkToCrud('Dividends', 'fas fa-list', Dividend::class);
     }
 }
