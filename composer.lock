@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd518cfdd0aedaed777d8a6d5b2eff0b",
+    "content-hash": "f5d4887f55ae22fef156cbf56b539989",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1443,16 +1443,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v3.5.11",
+            "version": "v3.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "9e78b6a7dd1b6ae11297b7a7df3e21f750d5d89e"
+                "reference": "70848d45c377f2718b2945422a9a99dbc7a3774d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/9e78b6a7dd1b6ae11297b7a7df3e21f750d5d89e",
-                "reference": "9e78b6a7dd1b6ae11297b7a7df3e21f750d5d89e",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/70848d45c377f2718b2945422a9a99dbc7a3774d",
+                "reference": "70848d45c377f2718b2945422a9a99dbc7a3774d",
                 "shasum": ""
             },
             "require": {
@@ -1523,7 +1523,7 @@
             ],
             "support": {
                 "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v3.5.11"
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v3.5.12"
             },
             "funding": [
                 {
@@ -1531,7 +1531,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-06T15:57:10+00:00"
+            "time": "2021-11-07T07:55:34+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -10544,7 +10544,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5",
+        "php": ">=8.0",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
