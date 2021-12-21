@@ -20,21 +20,21 @@ class CryptoWallet
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $tit홯e;
+    private $title;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTit홯e(): ?string
+    public function getTitle(): ?string
     {
-        return $this->tit홯e;
+        return $this->title;
     }
 
-    public function setTit홯e(string $tit홯e): self
+    public function setTitle(string $title): self
     {
-        $this->tit홯e = $tit홯e;
+        $this->title = $title;
 
         return $this;
     }

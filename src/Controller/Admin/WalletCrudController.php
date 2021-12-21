@@ -23,11 +23,7 @@ class WalletCrudController extends AbstractCrudController
             TextField::new('title')->setColumns(8),
             ChoiceField::new('category')
                 ->setColumns(4)
-                ->setChoices([
-                    'Giro' => 0,
-                    'Spar' => 1,
-                    'Cash' => 2
-                ]),
+                ->setChoices(Wallet::WALLETTYPS),
             TextareaField::new('description')
                 ->setColumns(12)
                 ->hideOnIndex(),

@@ -13,6 +13,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Wallet
 {
+    const WALLETTYPS = [
+        'Giro' => 0,
+        'Spar' => 1,
+        'Cash' => 2
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -85,11 +91,6 @@ class Wallet
 
         return $this;
     }
-    
-    public function __toString()
-    {
-        return $this->title;
-    }
 
     /**
      * @return Collection|Transaction[]
@@ -119,5 +120,10 @@ class Wallet
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title . ' | ' . array_flip(self::WALLETTYPS)[$this->category];
     }
 }
