@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Depot;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -9,9 +10,11 @@ class DepotFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $depot = (new Depot())
+            ->setTitle('Depot 1')
+        ;
 
+        $manager->persist($depot);
         $manager->flush();
     }
 }
