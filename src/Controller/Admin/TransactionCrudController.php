@@ -20,6 +20,7 @@ class TransactionCrudController extends AbstractCrudController
     {
         return [
             AssociationField::new('stock'),
+            AssociationField::new('depot'),
             ChoiceField::new('orderType')->setChoices([
                 'buy' => 0,
                 'sell' => 1
