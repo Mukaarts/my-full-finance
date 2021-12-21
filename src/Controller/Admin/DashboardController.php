@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Depot;
 use App\Entity\Dividend;
 use App\Entity\Stock;
 use App\Entity\Transaction;
@@ -30,6 +31,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Wallets', 'fas fa-list', Wallet::class);
+        yield MenuItem::linkToCrud('Depots', 'fas fa-list', Depot::class);
         yield MenuItem::section('Depot');
         yield MenuItem::linkToCrud('Stocks', 'fas fa-list', Stock::class);
         yield MenuItem::linkToCrud(
