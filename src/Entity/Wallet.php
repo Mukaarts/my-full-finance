@@ -16,7 +16,9 @@ class Wallet
     const WALLETTYPS = [
         'Giro' => 0,
         'Spar' => 1,
-        'Cash' => 2
+        'Cash' => 2,
+        'Depot' => 3,
+        'Crypto' => 4,
     ];
 
     /**

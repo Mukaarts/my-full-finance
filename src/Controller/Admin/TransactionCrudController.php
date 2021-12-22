@@ -3,11 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Transaction;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class TransactionCrudController extends AbstractCrudController
 {
@@ -20,8 +22,8 @@ class TransactionCrudController extends AbstractCrudController
     {
         return [
             AssociationField::new('stock'),
-            AssociationField::new('wallet'),
-            AssociationField::new('depot'),
+            AssociationField::new('wallet', 'Cash Wallet'),
+            AssociationField::new('depot', 'Depot'),
             ChoiceField::new('orderType')->setChoices([
                 'buy' => 0,
                 'sell' => 1
