@@ -7,48 +7,35 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\WalletRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use JetBrains\PhpStorm\Pure;
 
-/**
- * @ORM\Entity(repositoryClass=WalletRepository::class)
- */
+#[ORM\Entity(repositoryClass: WalletRepository::class)]
 class Wallet
 {
     const WALLETTYPS = [
         'Giro' => 0,
         'Spar' => 1,
-        'Cash' => 2,
-        'Depot' => 3,
-        'Crypto' => 4,
+        'Cash' => 2
     ];
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+    #[ORM\Column]
+    private string $title;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $category;
+    #[ORM\Column(type: "integer")]
+    private int $category;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $description;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="wallet")
-     */
-    private $transactions;
+    #[ORM\OneToMany(mappedBy: "wallet", targetEntity: Transaction::class)]
+    private Collection|Transaction $transactions;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->transactions = new ArrayCollection();
     }

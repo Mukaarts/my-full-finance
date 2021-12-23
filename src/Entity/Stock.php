@@ -7,41 +7,27 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\StockRepository;
 
-/**
- * @ORM\Entity(repositoryClass=StockRepository::class)
- */
+#[ORM\Entity(repositoryClass: StockRepository::class)]
 class Stock
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
+    #[ORM\Column]
+    private string $name;
 
-    /**
-     * @ORM\Column(type="string", length=10)
-     */
-    private $ticker;
+    #[ORM\Column(type:  'string', length: 10)]
+    private string $ticker;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $color;
+    #[ORM\Column]
+    private string $color;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="stock", cascade={"persist"})
-     */
+    #[ORM\OneToMany(mappedBy: 'stock', targetEntity: Transaction::class, cascade: ['persist'])]
     private $transactions;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Dividend::class, mappedBy="stock", cascade={"persist"}))
-     */
+    #[ORM\OneToMany(mappedBy: 'stock', targetEntity: Dividend::class, cascade: ['persist'])]
     private $dividends;
 
     public function __construct()

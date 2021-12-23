@@ -5,22 +5,16 @@ namespace App\Entity;
 use App\Repository\CryptoWalletRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=CryptoWalletRepository::class)
- */
+#[ORM\Entity(repositoryClass: CryptoWalletRepository::class)]
 class CryptoWallet
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+    #[ORM\Column]
+    private string $title;
 
     public function getId(): ?int
     {

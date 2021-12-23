@@ -3,24 +3,19 @@
 namespace App\Entity;
 
 use App\Repository\DividendRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=DividendRepository::class)
- */
+#[ORM\Entity(repositoryClass: DividendRepository::class)]
 class Dividend
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Stock::class, inversedBy="dividends")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: Stock::class, inversedBy: "dividends")]
+    #[ORM\JoinColumn(nullable: false)]
     private $stock;
 
     public function getId(): ?int

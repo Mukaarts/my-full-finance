@@ -7,58 +7,38 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=TransactionRepository::class)
- * @ORM\Table(name="`transaction`")
- */
+#[ORM\Entity(repositoryClass: TransactionRepository::class)]
+#[ORM\Table(name: "`transaction`")]
 class Transaction
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: "integer")]
     private $orderType;
 
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
+    #[ORM\Column(type: "decimal", precision: 10, scale: 2)]
     private $amount;
 
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
+    #[ORM\Column(type: "decimal", precision: 10, scale: 2)]
     private $price;
 
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
+    #[ORM\Column(type: "decimal", precision: 10, scale: 2)]
     private $fee;
 
-    /**
-     * @ORM\Column(type="date")
-     */
+    #[ORM\Column(type: 'datetime')]
     private $dateAt;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Stock::class, inversedBy="transactions")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: Stock::class, inversedBy: "transactions")]
+    #[ORM\JoinColumn(nullable: false)]
     private $stock;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Wallet::class, inversedBy="transactions")
-     */
+    #[ORM\ManyToOne(targetEntity: Wallet::class, inversedBy: "transactions")]
     private $wallet;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Depot::class, inversedBy="transactions")
-     */
+    #[ORM\ManyToOne(targetEntity: Depot::class, inversedBy: "transactions")]
     private $depot;
 
     public function getId(): ?int
