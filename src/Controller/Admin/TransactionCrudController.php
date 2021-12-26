@@ -7,6 +7,7 @@ use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -27,12 +28,13 @@ class TransactionCrudController extends AbstractCrudController
                 'sell' => 1,
                 'dividend' => 2
             ])->setColumns(3),
-            DateTimeField::new('dateAt')->setColumns(3),
+            DateField::new('dateAt')->setColumns(3),
             AssociationField::new('wallet', 'Cash Wallet')->setColumns(6),
             AssociationField::new('depot', 'Depot')->setColumns(6),
             NumberField::new('amount')->setColumns(4),
             NumberField::new('price')->setColumns(4),
             NumberField::new('fee')->setColumns(4),
+            TextField::new('fullPrice')->onlyOnIndex(),
         ];
     }
 }

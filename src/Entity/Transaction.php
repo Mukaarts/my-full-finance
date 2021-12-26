@@ -146,4 +146,10 @@ class Transaction
 
         return $this;
     }
+
+    public function getFullPrice(): ?string
+    {
+        return $this->amount * $this->price;
+    }
+
 }
