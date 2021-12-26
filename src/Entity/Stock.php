@@ -27,13 +27,9 @@ class Stock
     #[ORM\OneToMany(mappedBy: 'stock', targetEntity: Transaction::class, cascade: ['persist'])]
     private $transactions;
 
-    #[ORM\OneToMany(mappedBy: 'stock', targetEntity: Dividend::class, cascade: ['persist'])]
-    private $dividends;
-
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
-        $this->dividends = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,36 +97,6 @@ class Stock
             // set the owning side to null (unless already changed)
             if ($transaction->getStock() === $this) {
                 $transaction->setStock(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Dividend[]
-     */
-    public function getDividends(): Collection
-    {
-        return $this->dividends;
-    }
-
-    public function addDividend(Dividend $dividend): self
-    {
-        if (!$this->dividends->contains($dividend)) {
-            $this->dividends[] = $dividend;
-            $dividend->setStock($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDividend(Dividend $dividend): self
-    {
-        if ($this->dividends->removeElement($dividend)) {
-            // set the owning side to null (unless already changed)
-            if ($dividend->getStock() === $this) {
-                $dividend->setStock(null);
             }
         }
 
