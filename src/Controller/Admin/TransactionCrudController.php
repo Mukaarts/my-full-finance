@@ -21,17 +21,18 @@ class TransactionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('stock'),
-            AssociationField::new('wallet', 'Cash Wallet'),
-            AssociationField::new('depot', 'Depot'),
+            AssociationField::new('stock')->setColumns(6),
             ChoiceField::new('orderType')->setChoices([
                 'buy' => 0,
-                'sell' => 1
-            ]),
-            DateTimeField::new('dateAt'),
-            NumberField::new('amount'),
-            NumberField::new('price'),
-            NumberField::new('fee'),
+                'sell' => 1,
+                'dividend' => 2
+            ])->setColumns(3),
+            DateTimeField::new('dateAt')->setColumns(3),
+            AssociationField::new('wallet', 'Cash Wallet')->setColumns(6),
+            AssociationField::new('depot', 'Depot')->setColumns(6),
+            NumberField::new('amount')->setColumns(4),
+            NumberField::new('price')->setColumns(4),
+            NumberField::new('fee')->setColumns(4),
         ];
     }
 }
