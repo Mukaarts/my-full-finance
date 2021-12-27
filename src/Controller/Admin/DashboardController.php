@@ -2,9 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\CryptoWallet;
 use App\Entity\Depot;
-use App\Entity\Dividend;
 use App\Entity\Stock;
 use App\Entity\Transaction;
 use App\Entity\Wallet;

@@ -4,7 +4,13 @@ namespace App\Controller\Admin;
 
 use App\Entity\Transaction;
 use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+use EasyCorp\Bundle\EasyAdminBundle\Event\AfterCrudActionEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -17,6 +23,14 @@ class TransactionCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Transaction::class;
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
+                return $action->setIcon('fas fa-plus');
+            });
     }
 
     public function configureFields(string $pageName): iterable
@@ -35,6 +49,7 @@ class TransactionCrudController extends AbstractCrudController
             NumberField::new('price')->setColumns(4),
             NumberField::new('fee')->setColumns(4),
             TextField::new('fullPrice')->onlyOnIndex(),
+
         ];
     }
 }
