@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use App\Service\IexCloud;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\StockRepository;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: StockRepository::class)]
 class Stock
@@ -27,7 +29,7 @@ class Stock
     #[ORM\OneToMany(mappedBy: 'stock', targetEntity: Transaction::class, cascade: ['persist'])]
     private $transactions;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->transactions = new ArrayCollection();
     }
@@ -101,6 +103,11 @@ class Stock
         }
 
         return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->getTicker();
     }
 
     public function __toString(): string

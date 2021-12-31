@@ -7,6 +7,7 @@ use App\Entity\Stock;
 use App\Entity\Transaction;
 use App\Entity\Wallet;
 use App\Repository\TransactionRepository;
+use App\Service\IexCloud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -36,10 +37,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
+
+        yield MenuItem::section('Stammdaten');
         yield MenuItem::linkToCrud('Wallets', 'fas fa-list', Wallet::class);
         yield MenuItem::linkToCrud('Depots', 'fas fa-list', Depot::class);
 
-        yield MenuItem::section('Depot');
+        yield MenuItem::section('Berichte');
         yield MenuItem::linkToCrud('Stocks', 'fas fa-list', Stock::class);
         yield MenuItem::linkToCrud(
             'Transactions',
