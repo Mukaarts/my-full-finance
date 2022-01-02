@@ -38,16 +38,20 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::section('Stammdaten');
+        yield MenuItem::section('Securities');
+        yield MenuItem::linkToCrud('Stocks', 'fas fa-list', Stock::class);
+
+        yield MenuItem::section('Accounts');
         yield MenuItem::linkToCrud('Wallets', 'fas fa-list', Wallet::class);
         yield MenuItem::linkToCrud('Depots', 'fas fa-list', Depot::class);
 
-        yield MenuItem::section('Berichte');
-        yield MenuItem::linkToCrud('Stocks', 'fas fa-list', Stock::class);
+        yield MenuItem::section('Reports');
         yield MenuItem::linkToCrud(
             'Transactions',
             'fas fa-list',
             Transaction::class
         );
+
+        yield MenuItem::section('Settings');
     }
 }

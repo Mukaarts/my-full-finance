@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Transaction;
+use App\Service\IexCloud;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -20,6 +21,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class TransactionCrudController extends AbstractCrudController
 {
+    private IexCloud $iexCloud;
+
+    public function __construct(IexCloud $iexCloud)
+    {
+        $this->iexCloud = $iexCloud;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Transaction::class;
@@ -49,6 +57,11 @@ class TransactionCrudController extends AbstractCrudController
             NumberField::new('price')->setColumns(4),
             NumberField::new('fee')->setColumns(4),
             TextField::new('fullPrice')->onlyOnIndex(),
+            TextField::new('stock.price', 'Current Price')
+                ->onlyOnIndex()
+                ->formatValue(function ($value, $entity) {
+                    return $this->iexCloud->getPrice($entity->getStock()->getTicker()) * $entity->getAmount();
+                }),
 
         ];
     }

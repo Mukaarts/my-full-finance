@@ -34,7 +34,7 @@ class StockCrudController extends AbstractCrudController
                 ->formatValue(function ($value, $entity) {
                     return $this->iexCloud->getPrice($entity->getPrice());
                 })
-                ->onlyOnIndex(),
+                ->hideOnForm(),
             CollectionField::new('transactions')
                 ->setEntryType(TransactionType::class)
                 ->setEntryIsComplex(true)
