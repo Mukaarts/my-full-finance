@@ -8,6 +8,8 @@ use App\Entity\Transaction;
 use App\Entity\Wallet;
 use App\Repository\TransactionRepository;
 use App\Service\IexCloud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Asset;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -34,6 +36,11 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('My Full Finance');
     }
 
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addWebpackEncoreEntry('app');
+    }
+
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
@@ -46,6 +53,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Depots', 'fas fa-list', Depot::class);
 
         yield MenuItem::section('Reports');
+        yield MenuItem::linkToRoute('Holding', 'fas fa-list', 'holding', [
+            'chart' => 'chart',
+        ]);
         yield MenuItem::linkToCrud(
             'Transactions',
             'fas fa-list',

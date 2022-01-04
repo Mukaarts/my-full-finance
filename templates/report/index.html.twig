@@ -1,0 +1,13 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_content %}
+    <div style="height: 75vh;">
+        {{ render_chart(chart) }}
+    </div>
+{% endblock %}
+
+
+{% block body_custom_javascript %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
